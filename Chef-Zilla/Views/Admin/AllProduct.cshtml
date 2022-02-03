@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "AllProduct";
+}
+    <div class="container-fluid my-3">
+        <div class="row">
+            <div class="col-12">
+                @if (TempData["message"] != null)
+                {
+                    <div id="infoValidationSummary" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>@TempData["message"]</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div>
+                    <div>
+                        <table id="example2" style="border: 1px solid grey;" class="table">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col">Serial No</th>
+                                    <th scope="col">Product Type</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Prepare Time</th>
+                                    <th scope="col">Product Price</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (var i = 0; i < @Model.Count; i++)
+                                {
+                                    <tr class="@(i%2 == 0 ? "table-danger" : "") text-center">
+                                        <th scope="row">@(i + 1)</th>
+                                        <td>@Model[i].ProductType</td>
+                                        <td>@Model[i].ProductName</td>
+                                        <td>@Model[i].PrepareTime</td>
+                                        <td>@Model[i].ProductPrice</td>
+                                        <td class="text-center text-danger">
+                                            <a href="@Url.Action("EditProduct", "Admin", new { id = Model[i].ProductID })" class="text-danger">
+                                                <i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="@Url.Action("ViewProduct", "Admin", new {id = Model[i].ProductID})" class="text-danger">
+                                                <i class="fa fa-eye font-weight-bold ml-3" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="@Url.Action("DeleteProduct", "Admin", new {id = Model[i].ProductID})" class="text-danger" onclick="return confirm('Are you sure you want to delete this product?');">
+                                                <i class="fa fa-trash font-weight-bold ml-3" aria-hidden="true"></i> 
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true
+            });
+            if ("@TempData["message"]" != null) {
+                $('#infoValidationSummary').modal('show');
+            }
+        });
+    </script>
+}

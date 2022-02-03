@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Wish List";
+}
+@Html.Partial("~/Views/Shared/_NavBar.cshtml")
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+@if (TempData["message"] != null)
+{
+    <div id="infoValidationSummary" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>@TempData["message"]</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="container">
+    <div class="row box">
+        <div class="col-6">
+            <img class="img-fluid " src="~/Images/Group 56.png" alt="">
+        </div>
+        <div class="col-6">
+            <h1 style="font-weight: 400; margin-left: 30px; color: #5e5d5d;" class=" mt-5">Keep your favorite items in wish list to order later</h1><br>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3 class="font-weight-bold ">My Wish List</h3>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    @if (Model.ProductID.Count > 0)
+    {
+        for (var i = 0; i < @Model.ProductID.Count; i++)
+        {
+            <div class="row mt-5">
+                <div class="col-9 offset-3">
+                    <a href="@Url.Action("Delete", "WishList",new { wId = @Model.WishListID[i]})">
+                        <i style="color: indianred;" class="fas fa-times mr-2"></i>
+                    </a>
+                    <img style="width: 20%;" src="~/Images/Group 57.png" alt="">
+                    <a href="@Url.Action("Index", "ItemDetails", new {id = Model.ProductID[i]})">
+                        <span style="color: grey; font-weight: 400;">@Model.ProductName[i]</span>
+                    </a>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-center h4">You have no product in Wish List.</p>
+    }
+    <div class="row text-center my-5">
+        <div class="col-12 mt-5">
+            <a href="@Url.Action("Index", "FeaturedItem")">
+                <button class="buttonCss">Continue Adding Items</button>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+@Html.Partial("~/Views/Shared/_Footer.cshtml")
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            if ("@TempData["message"]" != null) {
+            $('#infoValidationSummary').modal('show');
+        }
+    </script>
+}

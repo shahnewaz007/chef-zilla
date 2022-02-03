@@ -1,0 +1,96 @@
+﻿@model IPagedList<Chef_Zilla.Models.Product>
+
+@{
+    ViewBag.Title = "General Item";
+}
+@using PagedList.Mvc;
+@using PagedList;
+@Html.Partial("~/Views/Shared/_NavBar.cshtml")
+<br>
+<br>
+<br>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1 ">
+            <img class="img-fluid" src="~/Images/pexels-lumn-1028599.png" alt="">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row text-center animated bounceIn mt-5">
+        <div class="md-form col-md-3 offset-md-5 col-sm-6 offset-sm-3 col-6 offset-3">
+            @using (Html.BeginForm("Search", "GeneralItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="input-group mb-3">
+                    <input type="text" id="search" name="product" class="form-control" aria-label="Text input with checkbox" style="border: 0; outline: 0; background: transparent; border-bottom: 1.2px solid #b3b3b3;" placeholder="Search Item">
+                    @*<label style="color: #b30000; left: 10px; top: 5px" class="position-absolute searchLabel" for="search">Search Item </label>*@
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white border-0">
+                            <button type="submit" className="btn" style="border: none;">
+                                <i class="fas fa-search text-danger"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="font-weight-bold">General Items</h1>
+        </div>
+    </div>
+    <div class="row">
+        @for (var i = 0; i < @Model.Count; i++)
+        {
+            <div class="col-md-4 mt-5">
+                <a href="@Url.Action("Index", "ItemDetails", new { id = @Model[i].ProductID })" class="text-decoration-none">
+                    <div class="card" style="border: 1px solid grey">
+                        <img class="card-img-top " src="@Url.Content(Model[i].ProductImage)" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model[i].ProductName</h5>
+                            <p class="color font-weight-bold">BDT: @Model[i].ProductPrice</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <nav aria-label="...">
+            @Html.PagedListPager(Model, page => Url.Action("Index", "GeneralItem", new { page, search = Request.QueryString["search"] }))
+        </nav>
+    </div>
+</div>
+
+
+@Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#search").focus(function () {
+                $(".searchLabel").animate({ "top": '-25px' }, 100);
+            });
+
+
+            $('#search').blur(function () {
+                if (!$(this).val()) {
+                    $(".searchLabel").animate({ "top": '5px' }, 100);
+                }
+            });
+
+
+            if (document.getElementById("search").value) {
+                $(".searchLabel").animate({ "top": '-25px' }, 100);
+            }
+        });
+    </script>
+    @*@Styles.Render("~/Animation/css")*@
+    @Scripts.Render("~/bundles/jqueryval")
+}

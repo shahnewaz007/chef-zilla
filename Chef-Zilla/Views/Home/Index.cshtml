@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "Chef Zilla";
+}
+@Html.Partial("~/Views/Shared/_NavBar.cshtml")
+<div>
+    <img class="slider" src="~/Images/Slider.png" alt="">
+</div>
+<div class="container">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-5">
+            <h2 class="font-weight-bold mt-5">No More Worry About Unhygienic Restaurant Food</h2><br>
+            <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+        <div class="col-md-7 col-sm-10 offset-sm-1 offset-md-0">
+            <img class="img-fluid " src="~/Images/Food Box.png" alt="">
+        </div>
+    </div>
+    <div class="row d-flex align-items-center">
+        <div class="col-md-7 col-sm-10 offset-sm-1 offset-md-0">
+            <img class="img-fluid " src="~/Images/Food Box 2.png" alt="">
+        </div>
+        <div class="col-md-5">
+            <h2 class="font-weight-bold mt-5 ">
+                Prepare Your Desired Food At Home
+            </h2><br>
+            <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-5">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12">
+                <h1 class="text-center font-weight-bold">How It Works</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="col-md-12 text-center">
+                    <img class="img-fluid" style="width: 40%" src="~/Images/Select icon.png" alt="">
+                </div>
+                <div class="col-md-12">
+                    <h5 class="font-weight-bold mt-3 text-center">Select Your Desire Food</h5>
+                </div>
+                <div class="col-md-12 text-center mt-5">
+                    <p style="font-size: 18px; color: #808080; text-align: justify">Choose your desired items from our delicious food menu. We have a large collection of food items for your daily needs as well as special occasions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-12 text-center">
+                    <img class="img-fluid" style="width: 40%" src="~/Images/Delivery icon.png" alt="">
+                </div>
+                <div class="col-md-12">
+                    <h5 class="font-weight-bold mt-3 text-center">Get Recipe and Ingredients</h5>
+                </div>
+                <div class="col-md-12 text-center mt-5">
+                    <p style="font-size: 18px; color: #808080; text-align: justify">Get details instructions and cook ready ingridients at your door. So don't worry about unhealthy food . You are cooking your own desired items.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-12 text-center">
+                    <img class="img-fluid" style="width: 40%" src="~/Images/Cook Icon.png" alt="">
+                </div>
+                <div class="col-md-12">
+                    <h5 class="font-weight-bold mt-3 text-center">Just Cook and Serve</h5>
+                </div>
+                <div class="col-md-12 text-center mt-5">
+                    <p style="font-size: 18px; color: #808080; text-align: justify">We will minimize your effort as much as possible. You will just need to cook/boil your food for a very short time and enjoy your meal with your family.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12">
+                <h1 class="text-center font-weight-bold">Featured Items</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-8">
+                <div class="row">
+                    <a href="@Url.Action("Index", "ItemDetails", new { id = @Model[Model.Count - 1].ProductID })" class="text-decoration-none">
+                        <div class="col-md-12">
+                            <img class="indexfirstpic" style="width: 100%; border-radius: 20px" src="@Url.Content(Model[@Model.Count - 1].ProductImage)" alt="">
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <h6 class="font-weight-bold text-dark">@Model[@Model.Count - 1].ProductName</h6>
+                            <p class="text-dark">Price: @Model[@Model.Count - 1].ProductPrice BDT</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="@Url.Action("Index", "ItemDetails", new { id = @Model[Model.Count - 2].ProductID })" class="text-decoration-none">
+                            <img class="indexsecondpic" style="width: 100%; border-radius: 20px" src="@Url.Content(Model[@Model.Count - 2].ProductImage)" alt="">
+                            <div class="mt-2">
+                                <h6 class="font-weight-bold text-dark">@Model[@Model.Count - 2].ProductName</h6>
+                                <p class="text-dark">Price: @Model[@Model.Count - 2].ProductPrice BDT</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="@Url.Action("Index", "ItemDetails", new { id = @Model[Model.Count - 3].ProductID })" class="text-decoration-none">
+                            <img class="indexthirdpic" style="width: 100%; border-radius: 20px" src="@Url.Content(Model[@Model.Count - 3].ProductImage)" alt="">
+                            <div class="mt-2">
+                                <h6 class="font-weight-bold text-dark">@Model[@Model.Count - 3].ProductName</h6>
+                                <p class="text-dark">Price: @Model[@Model.Count - 3].ProductPrice BDT</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="@Url.Action("Index", "ItemDetails", new { id = @Model[Model.Count - 4].ProductID })" class="text-decoration-none">
+                    <img class="indexfourthpic" src="@Url.Content(Model[@Model.Count - 4].ProductImage)" alt="">
+                    <div class="mt-2">
+                        <h6 class="font-weight-bold text-dark">@Model[@Model.Count - 4].ProductName</h6>
+                        <p class="text-dark">Price: @Model[@Model.Count - 4].ProductPrice BDT</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="@Url.Action("Index", "FeaturedItem")" class="btn text-white buttonCss">View All</a>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container-fluid mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <img style="width: 95%" src="~/Images/Food Diagram.png" alt="">
+            </div>
+            <div class="col-md-5 mt-4">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <h2 class="text-center font-weight-bold">Make Your Daily, Weekly Or Monthly Food Plan</h2>
+                    </div>
+                    <div class="col-md-12 text-center mt-5">
+                        <p style="font-size: 18px; color: #808080; text-align: justify">We will take care of your regular food routine. Just make a diet plan. Your ingredients with detailed recipe will be at your door at right time.Just follow the instructions and prepare your food in a short time period.Be a professionalchef to your family with our service.</p>
+                    </div>
+                    <div class="col-md-12 text-center mt-5">
+                        <a href="@Url.Action("Index", "FoodPlan")" class="btn text-white buttonCss">Make My Diet Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+    <div style="border-radius: 15px;" class="container bg px-5 ">
+        <div class="row">
+            <div class="col-lg-5">
+                <h1 class="text-light pt-5">Build Your Own Box</h1><br>
+                <p>Customize your menu with our available recipe. You can customize any item adjusting your food interest. Suppose you want to add more calories in your ordered item . Just edit the ingredient list and submit.</p>
+                <div class="text-center">
+                    <br>
+                    <a href="@Url.Action("Create", "Box")" class="btn text-white boxButton">Build My Box</a>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <img class="foodImage" style="width: 95%;" src="~/Images/box.png" alt="">
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+@Html.Partial("~/Views/Shared/_Footer.cshtml")

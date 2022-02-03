@@ -1,0 +1,103 @@
+﻿h1 {
+    color: #b30000;
+}
+
+h4 {
+    color: #b30000;
+}
+
+h3 {
+    color: #b30000;
+}
+
+h5 {
+    color: #b30000;
+}
+
+.box {
+    border: 1px solid grey;
+}
+
+.color {
+    color: #b30000;
+}
+
+h2 {
+    color: #b30000;
+}
+
+.fp {
+    color: #b30000;
+}
+
+.buttonCss {
+    color: white;
+    background-color: #b30000;
+    padding: 5px 25px 5px 25px;
+    border: none;
+}
+
+ul.orderStatusUl {
+    text-align: justify;
+    position: relative;
+    overflow: hidden;
+}
+
+ul.orderStatusUl:before {
+    content: '';
+    width: 100%;
+    border: 1px solid grey !important;
+    position: absolute;
+    top: 4em;
+    margin-top: -2px;
+    z-index: 0;
+}
+
+.listWhite {
+    width: 6em;
+    height: 6em;
+    text-align: center;
+    border: 1px solid grey;
+    line-height: 6em;
+    border-radius: 50%;
+    background: white;
+    margin: 0 1em;
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    position: relative !important;
+    z-index: 0 !important;
+}
+
+.listPink {
+    width: 6em;
+    height: 6em;
+    text-align: center;
+    border: 1px solid grey;
+    line-height: 6em;
+    border-radius: 50%;
+    background: #e0abb8;
+    margin: 0 1em;
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    position: relative!important;
+    z-index: 0!important;
+}
+
+ul.orderStatusUl:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+}
+
+.days {
+    border: 1px solid grey !important;
+    border-radius: 50% !important;
+    padding: 15px !important;
+    color: #b30000 !important;
+}
+
+input[type=checkbox]:checked + label.days {
+    background: #C5D4C4 !important;
+}
